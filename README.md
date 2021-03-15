@@ -2,7 +2,7 @@
 A simple tiny space game written in JavaFX.
 
 The "dev" branch contains new developments that might come to the game later on. The "simpleversion" branch is like the name says more simple and should also run on
-embedded devices etc. 
+embedded devices etc.
 The "master" branch now contains some more fun things like enemies attacking in waves, a level boss that needs more hits to kill, enemies that drop bombs and an
 enemy boss that also fires rockets.
 
@@ -20,10 +20,10 @@ I've recorded a little [video](https://youtu.be/Kc0lv3R5VG0) that shows the game
 
 ### Requirements for building a native package
 If you would like to build a native package you should have at least JDK 13 installed
-on your machine. Make sure you run on Java13 and do a `gradle clean build jar` on the 
-command line and execute the build app script e.g. `bash build_app.sh`. If everything 
+on your machine. Make sure you run on Java13 and do a `gradle clean build jar` on the
+command line and execute the build app script e.g. `bash build_app.sh`. If everything
 worked ok you will find the native app in the folder `/build/installer`.
-To build a native package you will need the early access release of the 
+To build a native package you will need the early access release of the
 jpackage tool. Please find more info [here](https://github.com/dlemmermann/JPackageScriptFX).
 
 
@@ -80,7 +80,7 @@ mvn clean -Pios client:build
 mvn -Pios client:run
 ```
 
-The iOS spacefx.app file can be found at 
+The iOS spacefx.app file can be found at
 ```
 /PATH/TO/SpaceFX/target/client/arm64-ios/
 ```
@@ -207,3 +207,30 @@ cd /PATH/TO/SpaceFX
 ```
 
 Open a browser and go to ```localhost:8080```
+
+
+### Run SpaceFX on a Raspberry Pi
+
+1. git clone git@github.com:chrisbensen/SpaceFX.git
+
+1. cd SpaceFX
+
+1. git checkout pi
+
+1. Download https://gluonhq.com/products/javafx/#ea
+
+1. mvn compile
+
+1. Edit ~/.bashrc and add the following to the end:
+
+bash run.sh
+
+Tip: The display may be different than the one that I used:
+
+-Degl.displayid=/dev/dri/card0
+
+or
+
+-Degl.displayid=/dev/dri/card1
+
+  run.sh was created by running 'mvn -X javafx:run'
