@@ -16,6 +16,9 @@
 
 package eu.hansolo.spacefx;
 
+import java.io.*;
+import java.lang.Exception;
+
 //import com.jpro.webapi.WebAPI;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -83,6 +86,9 @@ public class SpaceFX extends Application {
                                 torpedoArmed = false;
                             }
                             break;
+                        case Q:
+                            stop();
+                               
                     }
                 } else if (view.isHallOfFameScreen()) {
                     switch (e.getCode()) {
@@ -107,6 +113,8 @@ public class SpaceFX extends Application {
                         case SPACE:
                             view.storePlayer();
                             break;
+                        case Q:
+                            stop();
                     }
                 } else if (e.getCode() == KeyCode.P && view.isReadyToStart()) {
                     view.startGame();
@@ -136,6 +144,8 @@ public class SpaceFX extends Application {
                         case SPACE:
                             torpedoArmed = true;
                             break;
+                        case Q:
+                            stop();
                     }
                 }
             });
@@ -155,10 +165,15 @@ public class SpaceFX extends Application {
     }
 
     @Override public void stop() {
-        //if (!IS_BROWSER) {
-        Platform.exit();
-        System.exit(0);
-        //}
+        try {
+		Runtime runtime = Runtime.getRuntime();	
+		Process proc = runtime.exec("sudo shutdown now");
+
+		Platform.exit();
+		System.exit(0);
+        }
+        catch(Exception e) {
+        }
     }
 
     public static void main(String[] args) {
