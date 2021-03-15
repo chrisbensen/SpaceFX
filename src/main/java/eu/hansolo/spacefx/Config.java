@@ -26,13 +26,11 @@ import static com.gluonhq.attach.util.Platform.isDesktop;
 
 
 public class Config {
-    public static final int         screen_width                        = 800;
-    public static final int         screen_height                       = 600;
     public static final String      PROPERTIES_FILE_NAME                = "spacefx.properties";
-    public static final Rectangle2D VISUAL_BOUNDS                       = isDesktop() ? new Rectangle2D(0, 0, screen_width, screen_height) : Screen.getPrimary().getVisualBounds();
-    //public static final Rectangle2D VISUAL_BOUNDS                       = new Rectangle2D(0, 0, screen_width, screen_height);
-    public static final boolean     IS_PORTRAIT_MODE                    = false;//VISUAL_BOUNDS.getHeight() > VISUAL_BOUNDS.getWidth();
-    public static final double      BKG_SCALING_FACTOR                  = IS_PORTRAIT_MODE ? (VISUAL_BOUNDS.getHeight() / screen_height) : (VISUAL_BOUNDS.getWidth() / screen_width);
+    public static final Rectangle2D VISUAL_BOUNDS                       = isDesktop() ? new Rectangle2D(0, 0, 700, 900) : Screen.getPrimary().getVisualBounds();
+    //public static final Rectangle2D VISUAL_BOUNDS                       = new Rectangle2D(0, 0, 700, 900);
+    public static final boolean     IS_PORTRAIT_MODE                    = VISUAL_BOUNDS.getHeight() > VISUAL_BOUNDS.getWidth();
+    public static final double      BKG_SCALING_FACTOR                  = IS_PORTRAIT_MODE ? (VISUAL_BOUNDS.getHeight() / 900) : (VISUAL_BOUNDS.getWidth() / 700);
     public static final double      SCALING_FACTOR                      = isDesktop() ? 1.0 : 0.7;
     //public static final double      SCALING_FACTOR                      = 1.0;
     public static final double      SWITCH_POINT                        = 2079 * BKG_SCALING_FACTOR;
